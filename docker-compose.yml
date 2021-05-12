@@ -1,25 +1,25 @@
 version: '3'
 services:
-  web:
-    container_name: web
-    build: .
-    command: npm run start:dev
-    env_file: .env
-    environment:
-      - DB_HOSTNAME=db
-      - DB_PORT=$DB_PORT
-      - DB_USERNAME=$DB_USERNAME
-      - DB_PASSWORD=$DB_PASSWORD
-      - DB_NAME=$DB_NAME
-      - JWT_TOKEN=$JWT_TOKEN
-    volumes:
-      - .:/usr/app/
-    ports:
-      - "3000:3000"
-    networks:
-      - app-network
-    depends_on:
-      - db
+  # web:
+  #   container_name: web
+  #   build: .
+  #   command: npm run start:dev
+  #   env_file: .env
+  #   environment:
+  #     - DB_HOSTNAME=localhost
+  #     - DB_PORT=$DB_PORT
+  #     - DB_USERNAME=$DB_USERNAME
+  #     - DB_PASSWORD=$DB_PASSWORD
+  #     - DB_NAME=$DB_NAME
+  #     - JWT_TOKEN=$JWT_TOKEN
+  #   volumes:
+  #     - .:/usr/app/
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - app-network
+  #   depends_on:
+  #     - db
 
   db:
     container_name: db
@@ -31,8 +31,10 @@ services:
     environment:
       - POSTGRES_USERNAME=$DB_USERNAME
       - POSTGRES_PASSWORD=$DB_PASSWORD
-    networks:
-      - app-network
+    ports:
+      - "5432:5432"
+    # networks:
+      # - app-network
 
 networks:
   app-network:

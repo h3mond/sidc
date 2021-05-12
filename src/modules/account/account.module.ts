@@ -7,11 +7,11 @@ import {
 } from './account.provider';
 import { AccountOrmEntity } from './database/account.orm-entity';
 import { AccountRepository } from './database/account.repository';
-import { AccountController } from './web/account.controller';
+import { CreateAccountController } from './use-cases/create-account/create-account.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([AccountOrmEntity])],
-  controllers: [AccountController],
+  controllers: [CreateAccountController],
   providers: [AccountRepository, createAccountProvider, bcryptServiceProvider],
   exports: [AccountRepository, bcryptServiceSymbol],
 })

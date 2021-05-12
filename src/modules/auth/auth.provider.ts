@@ -3,8 +3,8 @@ import { JwtService } from '@nestjs/jwt';
 import { BcryptServiceAdapter } from '../../infra/crypto/bcrypt-service.adapter';
 import { bcryptServiceSymbol } from '../account/account.provider';
 import { AccountRepository } from '../account/database/account.repository';
-import { JwtStrategy } from './passport/jwt-strategy.strategy';
-import { LocalStrategy } from './passport/local-strategy.strategy';
+import { JwtStrategy } from './passport/jwt.strategy';
+import { LocalStrategy } from './passport/local.strategy';
 import { AuthService } from './services/auth.service';
 
 export const loadAccountSymbol = Symbol('loadAccountSymbol');

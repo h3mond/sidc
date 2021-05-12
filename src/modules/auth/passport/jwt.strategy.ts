@@ -1,6 +1,6 @@
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
-import { AccountIdentity, JwtPayload } from '../types/auth.types';
+import { AccountIdentity, JwtPayload } from './types';
 
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly secret: string) {

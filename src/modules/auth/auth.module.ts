@@ -8,7 +8,10 @@ import {
   loadAccountProvider,
   localStrategyProvider,
 } from './auth.provider';
-import { AuthController } from './web/auth.controller';
+import { AuthController } from './controllers/auth.controller';
+import { config } from 'dotenv';
+
+config();
 
 @Module({
   imports: [

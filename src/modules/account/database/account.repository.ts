@@ -36,7 +36,6 @@ export class AccountRepository
     id?: string;
     email?: string;
   }): Promise<AccountEntity> {
-    console.log(entity);
     return await this.findOne(entity);
   }
 }
