@@ -1,7 +1,7 @@
 import {
   AccountEntity,
   AccountEntityProps,
-} from '../../../core/domain/account/entities/account.entity';
+} from '../../../core/domain/account/entity/account.entity';
 import {
   OrmEntityProps,
   OrmMapper,
@@ -22,8 +22,10 @@ export class AccountOrmMapper extends OrmMapper<
     return domainEntityProps;
   }
 
-  protected toOrmProps(entity: AccountEntity): OrmEntityProps<AccountEntity> {
-    const ormEntityProps: OrmEntityProps<AccountEntity> = {
+  protected toOrmProps(
+    entity: AccountEntity,
+  ): OrmEntityProps<AccountOrmEntity> {
+    const ormEntityProps: OrmEntityProps<AccountOrmEntity> = {
       name: entity.name,
       surname: entity.surname,
       email: entity.email,

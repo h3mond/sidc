@@ -24,4 +24,13 @@ export abstract class EntityBase<T> {
   get createdAt(): DateVO {
     return this._createdAt;
   }
+
+  public getCopy(): T & EntityBaseProps {
+    const propsCopy = {
+      id: this._id,
+      createdAt: this.createdAt,
+      ...this.props,
+    };
+    return Object.freeze(propsCopy);
+  }
 }

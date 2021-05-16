@@ -1,7 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { AccountEntity } from '../../../core/domain/account/entities/account.entity';
+import { AccountEntity } from '../../../core/domain/account/entity/account.entity';
 import { CreateAccountPort } from '../../../core/domain/account/ports/create-account.port';
 import { LoadAccountPort } from '../../../core/domain/account/ports/load-account.port';
 import { TypeOrmRepositoryBase } from '../../../infra/database/base-classes/typeorm.repository.base';
@@ -29,7 +29,8 @@ export class AccountRepository
     if (exists) {
       throw new ConflictException('Account exists');
     }
-    return !!(await this.save(account));
+    const result = await this.save(account);
+    return result;
   }
 
   async loadAccount(entity: {

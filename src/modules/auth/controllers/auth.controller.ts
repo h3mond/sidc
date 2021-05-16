@@ -7,17 +7,21 @@ import {
   ApiBadRequestResponse,
   ApiBody,
   ApiCreatedResponse,
-  ApiOperation,
+  ApiForbiddenResponse,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { Account } from '../decorators/account.decorator';
-import { AccountEntity } from '../../../core/domain/account/entities/account.entity';
 import { AuthResponse } from '../dtos/auth-response.dto';
 import { AuthRequest } from '../dtos/auth-request.dto';
+import { AccountIdentity } from '../passport/types';
 
 @ApiTags('Auth')
 @Controller()
+@UseGuards(LocalAuthGuard)
+@ApiForbiddenResponse()
+@ApiBadRequestResponse()
+@ApiUnauthorizedResponse()
 export class AuthController {
   constructor(
     @Inject(loadAccountSymbol)
@@ -25,20 +29,9 @@ export class AuthController {
   ) {}
 
   @Post(routes.auth.login)
-  @UseGuards(LocalAuthGuard)
   @ApiBody({ type: AuthRequest })
-  @ApiOperation({ summary: 'User authentication' })
-  @ApiCreatedResponse({
-    type: AuthResponse,
-    description: 'Creates JWT token.',
-  })
-  @ApiUnauthorizedResponse({
-    description: 'Invalid credentials.',
-  })
-  @ApiBadRequestResponse({
-    description: 'Bad request',
-  })
-  login(@Account() account: AccountEntity): AuthResponse {
+  @ApiCreatedResponse({ type: AuthResponse })
+  login(@Account() account: AccountIdentity) {
     return this.authService.login(account);
   }
 }

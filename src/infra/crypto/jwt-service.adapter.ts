@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { TokenProtocol } from '../../core/common/protocols/crypto.protocol';
+import { TokenProtocol } from '../../core/shared/protocols/crypto.protocol';
 
 @Injectable()
 export class JwtServiceAdapter implements TokenProtocol {

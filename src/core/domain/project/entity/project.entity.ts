@@ -1,11 +1,10 @@
-import { EntityBase } from '../../../common/base-classes/entity.base';
-import { ID } from '../../../common/value-objects/id.value-object';
+import { EntityBase } from '../../../shared/base-classes/entity.base';
+import { ID } from '../../../shared/value-objects/id.value-object';
 
 export interface ProjectEntityProps {
   ownerId: ID;
   name: string;
-  accessToken: string;
-  clientToken: string;
+  clientSecret: ID;
 }
 
 export class ProjectEntity extends EntityBase<ProjectEntityProps> {
@@ -21,11 +20,7 @@ export class ProjectEntity extends EntityBase<ProjectEntityProps> {
     return this.props.ownerId;
   }
 
-  get accessToken() {
-    return this.accessToken;
-  }
-
-  get clientToken() {
-    return this.clientToken;
+  get clientSecret() {
+    return this.props.clientSecret;
   }
 }

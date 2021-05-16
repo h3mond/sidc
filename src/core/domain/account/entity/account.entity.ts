@@ -1,4 +1,4 @@
-import { EntityBase } from '../../../common/base-classes/entity.base';
+import { EntityBase } from '../../../shared/base-classes/entity.base';
 
 export interface AccountEntityProps {
   name: string;

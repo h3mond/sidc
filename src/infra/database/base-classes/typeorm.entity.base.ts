@@ -7,7 +7,7 @@ export abstract class TypeOrmEntityBase {
     }
   }
 
-  @PrimaryColumn({ update: false })
+  @PrimaryColumn({ update: false, type: 'uuid' })
   id: string;
 
   @CreateDateColumn({

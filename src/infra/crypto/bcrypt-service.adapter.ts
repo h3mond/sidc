@@ -3,7 +3,7 @@ import * as bcrypt from 'bcrypt';
 import {
   HashCompareProtocol,
   HashProtocol,
-} from '../../core/common/protocols/crypto.protocol';
+} from '../../core/shared/protocols/crypto.protocol';
 
 @Injectable()
 export class BcryptServiceAdapter implements HashProtocol, HashCompareProtocol {

@@ -1,7 +1,7 @@
 import { DeepPartial } from 'typeorm';
-import { EntityBaseProps } from '../../../core/common/base-classes/entity.base';
-import { DateVO } from '../../../core/common/value-objects/date.value-object';
-import { ID } from '../../../core/common/value-objects/id.value-object';
+import { EntityBaseProps } from '../../../core/shared/base-classes/entity.base';
+import { DateVO } from '../../../core/shared/value-objects/date.value-object';
+import { ID } from '../../../core/shared/value-objects/id.value-object';
 import { TypeOrmEntityBase } from './typeorm.entity.base';
 
 export type OrmEntityProps<OrmEntity> = Omit<OrmEntity, 'id' | 'createdAt'>;

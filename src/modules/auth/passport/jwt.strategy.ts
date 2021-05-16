@@ -1,5 +1,6 @@
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
+import { ID } from '../../../core/shared/value-objects/id.value-object';
 import { AccountIdentity, JwtPayload } from './types';
 
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -12,6 +13,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   async validate(payload: JwtPayload): Promise<AccountIdentity> {
-    return { id: payload.subId, email: payload.email };
+    return { id: new ID(payload.subId), email: payload.email };
   }
 }

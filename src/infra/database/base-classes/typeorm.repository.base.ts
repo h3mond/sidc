@@ -1,6 +1,6 @@
 import { Repository } from 'typeorm';
-import { EntityBaseProps } from '../../../core/common/base-classes/entity.base';
-import { RepositoryPort } from '../../../core/common/ports/repository.port';
+import { EntityBaseProps } from '../../../core/shared/base-classes/entity.base';
+import { RepositoryPort } from '../../../core/shared/ports/repository.port';
 import { OrmMapper } from './orm-mapper.base';
 import { TypeOrmEntityBase } from './typeorm.entity.base';
 
@@ -13,11 +13,10 @@ export abstract class TypeOrmRepositoryBase<
     private readonly mapper: OrmMapper<T, OrmEntity>,
   ) {}
 
-  async save(entity: T): Promise<T> {
+  async save(entity: T): Promise<boolean> {
     const ormEntity = this.mapper.toOrmEntity(entity);
     const result = await this.repository.save(ormEntity);
-    if (result) return this.mapper.toDomainEntity(result);
-    return undefined;
+    return !!result;
   }
 
   async delete(entity: T): Promise<T> {

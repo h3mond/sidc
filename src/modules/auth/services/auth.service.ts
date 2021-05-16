@@ -1,9 +1,10 @@
 import { JwtService } from '@nestjs/jwt';
-import { HashCompareProtocol } from '../../../core/common/protocols/crypto.protocol';
-import { AccountEntity } from '../../../core/domain/account/entities/account.entity';
+import { HashCompareProtocol } from '../../../core/shared/protocols/crypto.protocol';
 import { LoadAccountPort } from '../../../core/domain/account/ports/load-account.port';
 import { AuthRequest } from '../dtos/auth-request.dto';
 import { AuthResponse } from '../dtos/auth-response.dto';
+import { AccountEntity } from '../../../core/domain/account/entity/account.entity';
+import { AccountIdentity } from '../passport/types';
 
 export class AuthService {
   constructor(
@@ -29,10 +30,10 @@ export class AuthService {
     return null;
   }
 
-  login(account: AccountEntity): AuthResponse {
+  login(account: AccountIdentity): AuthResponse {
     return {
       access_token: this.jwtService.sign({
-        subId: account.id,
+        subId: account.id.value,
         email: account.email,
       }),
     };

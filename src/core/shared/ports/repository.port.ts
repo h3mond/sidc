@@ -1,5 +1,5 @@
 export interface SavePort<T> {
-  save(entity: T): Promise<T>;
+  save(entity: T): Promise<boolean>;
 }
 
 export interface DeletePort<T> {

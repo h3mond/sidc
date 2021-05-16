@@ -3,14 +3,14 @@ import { IsEmail, IsNotEmpty } from 'class-validator';
 
 export class AuthRequest {
   @ApiProperty({
-    description: 'Account email',
+    title: 'Account email',
     example: 'john@mail.kz',
   })
   @IsEmail()
   email: string;
 
   @ApiProperty({
-    description: 'Account password',
+    title: 'Account password',
     example: 'password',
   })
   @IsNotEmpty()

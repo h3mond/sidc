@@ -1,9 +1,11 @@
+import { ID } from '../../../../core/shared/value-objects/id.value-object';
+
 export interface JwtPayload {
-  subId: number;
+  subId: string;
   email: string;
 }
 
 export interface AccountIdentity {
-  id: number;
+  id: ID;
   email: string;
 }

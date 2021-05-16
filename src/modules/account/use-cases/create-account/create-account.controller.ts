@@ -7,16 +7,17 @@ import {
   Post,
 } from '@nestjs/common';
 import {
+  ApiBadRequestResponse,
+  ApiConflictResponse,
   ApiCreatedResponse,
   ApiOperation,
-  ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
 import { CreateAccountCommand } from '../../../../core/domain/account/use-cases/create-account.command';
 import { CreateAccountService } from '../../../../core/services/account/create-account.service';
 import { routes } from '../../../../infra/configs/app.routes';
 import { createAccountSymbol } from '../../account.provider';
-import { CreateAccountRequest } from './create-account.request.dto';
+import { CreateAccountDto } from '../../dtos/create-account.request.dto';
 
 @ApiTags('Account')
 @Controller()
@@ -27,21 +28,11 @@ export class CreateAccountController {
   ) {}
 
   @Post(routes.account.create)
-  @ApiOperation({
-    summary: 'Create account.',
-  })
-  @ApiCreatedResponse({
-    description: 'Account was successfully cretaed.',
-  })
-  @ApiResponse({
-    status: HttpStatus.CONFLICT,
-    description: 'User email already taken.',
-  })
-  @ApiResponse({
-    status: HttpStatus.BAD_REQUEST,
-    description: 'Bad request',
-  })
-  async createAccount(@Body() body: CreateAccountRequest) {
+  @ApiOperation({ summary: 'Create account.' })
+  @ApiCreatedResponse()
+  @ApiConflictResponse()
+  @ApiBadRequestResponse()
+  async createAccount(@Body() body: CreateAccountDto) {
     const command = new CreateAccountCommand({
       name: body.name,
       surname: body.surname,

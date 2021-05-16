@@ -1,5 +1,6 @@
 const accountRoot = '/account';
 const authRoot = '/auth';
+const projectRoot = '/project';
 
 export const routes = {
   account: {
@@ -9,5 +10,9 @@ export const routes = {
   auth: {
     root: authRoot,
     login: `${authRoot}/login`,
+  },
+  project: {
+    root: projectRoot,
+    create: `${projectRoot}/create`,
   },
 };

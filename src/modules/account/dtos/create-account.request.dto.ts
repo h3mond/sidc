@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { AccountEntityProps } from '../../../../core/domain/account/entities/account.entity';
+import { AccountEntityProps } from '../../../core/domain/account/entity/account.entity';
 import { IsEmail, IsNotEmpty } from 'class-validator';
 
-export class CreateAccountRequest implements AccountEntityProps {
+export class CreateAccountDto implements AccountEntityProps {
   @IsNotEmpty()
   @ApiProperty({ description: 'Name of user' })
   name: string;
