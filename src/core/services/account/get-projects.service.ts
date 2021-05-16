@@ -10,6 +10,7 @@ export class GetProjectsService implements GetProjectsQuery {
     const account = await this.loadAccountPort.loadAccountProjects(
       accountId.value,
     );
+    account.password = undefined;
     return account.projects;
   }
 }

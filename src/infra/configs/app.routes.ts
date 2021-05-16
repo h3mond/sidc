@@ -14,5 +14,6 @@ export const routes = {
   project: {
     root: projectRoot,
     create: `${projectRoot}/create`,
+    all: `${projectRoot}/all`,
   },
 };

@@ -32,6 +32,13 @@ export class ProjectRepository extends TypeOrmRepositoryBase<
   protected prepareQuery(
     params: DeepPartial<EntityBaseProps & ProjectEntityProps>,
   ): WhereCondition<ProjectOrmEntity> {
-    throw new Error('Method not implemented.');
+    const where: WhereCondition<ProjectOrmEntity> = {};
+    if (params.id !== undefined) {
+      where.id = params.id.value;
+    }
+    if (params.ownerId !== undefined) {
+      where.ownerId = params.ownerId.value;
+    }
+    return where;
   }
 }
