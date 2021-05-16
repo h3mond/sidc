@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmOptions } from './infra/configs/typeorm.config';
-import { AccountModule } from './modules/account/account.module';
-import { AuthModule } from './modules/auth/auth.module';
-import { ProjectModule } from './modules/project/project.module';
+import { AccountModule } from './modules/presenters/account/account.module';
+import { PersistenceModule } from './modules/persistence/persistence.module';
+import { AuthModule } from './modules/presenters/auth/auth.module';
 
 @Module({
   imports: [
@@ -12,10 +12,10 @@ import { ProjectModule } from './modules/project/project.module';
       entities: ['dist/**/*.orm-entity{.ts,*.js}'],
       migrations: ['dist/**/migrations/*{.ts,*.js}'],
     }),
+    PersistenceModule,
     AccountModule,
-    ProjectModule,
     AuthModule,
   ],
-  providers: [AccountModule],
+  providers: [PersistenceModule],
 })
 export class AppModule {}

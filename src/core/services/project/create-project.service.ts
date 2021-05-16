@@ -1,7 +1,7 @@
-import { ProjectEntity } from '../../domain/project/entity/project.entity';
-import { CreateProjectPort } from '../../domain/project/ports/create-project.port';
-import { CreateProjectCommand } from '../../domain/project/use-cases/create-project.command';
-import { CreateProjectUseCase } from '../../domain/project/use-cases/create-project.use-case';
+import { ProjectEntity } from '../../domain/entities/project.entity';
+import { CreateProjectCommand } from '../../domain/ports/in/create-project/create-project.command';
+import { CreateProjectUseCase } from '../../domain/ports/in/create-project/create-project.use-case';
+import { CreateProjectPort } from '../../domain/ports/out/project/create-project.port';
 
 export class CreateProjectService implements CreateProjectUseCase {
   constructor(private readonly _createProjectPort: CreateProjectPort) {}

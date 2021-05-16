@@ -20,7 +20,7 @@ export abstract class OrmMapper<T extends EntityBaseProps, OrmEntity> {
     return this.assignPropsToEntity(entityProps, ormEntity);
   }
 
-  toOrmEntity(entity: T): DeepPartial<OrmEntity> {
+  toOrmEntity(entity: T): OrmEntity {
     const props = this.toOrmProps(entity);
     return new this.ormEntityConstructor({
       ...props,

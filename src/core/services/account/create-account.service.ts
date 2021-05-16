@@ -1,8 +1,8 @@
-import { CreateAccountCommand } from '../../domain/account/use-cases/create-account.command';
-import { CreateAccountUseCase } from '../../domain/account/use-cases/create-account.use-case';
-import { CreateAccountPort } from '../../domain/account/ports/create-account.port';
+import { CreateAccountUseCase } from '../../domain/ports/in/create-account/create-account.use-case';
+import { CreateAccountPort } from '../../domain/ports/out/account/create-account.port';
 import { HashProtocol } from '../../shared/protocols/crypto.protocol';
-import { AccountEntity } from '../../domain/account/entity/account.entity';
+import { AccountEntity } from '../../domain/entities/account.entity';
+import { CreateAccountCommand } from '../../domain/ports/in/create-account/create-account.command';
 
 export class CreateAccountService implements CreateAccountUseCase {
   constructor(
