@@ -1,5 +1,4 @@
 import { EntityBase } from '../../shared/base-classes/entity.base';
-import { ID } from '../../shared/value-objects/id.value-object';
 import { ProjectEntity } from './project.entity';
 
 export interface AccountEntityProps {

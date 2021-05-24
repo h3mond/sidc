@@ -13,10 +13,9 @@ import {
   ApiInternalServerErrorResponse,
   ApiOperation,
   ApiTags,
-  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { CreateProjectCommand } from '../../../../../core/domain/ports/in/create-project/create-project.command';
-import { CreateProjectService } from '../../../../../core/services/project/create-project.service';
+import { CreateProjectService } from './create-project.service';
 import { routes } from '../../../../../infra/configs/app.routes';
 import { Account } from '../../../auth/decorators/account.decorator';
 import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';

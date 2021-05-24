@@ -5,7 +5,7 @@ import {
   ApiOperation,
   ApiTags,
 } from '@nestjs/swagger';
-import { GetProjectsService } from '../../../../../core/services/account/get-projects.service';
+import { GetProjectsService } from './get-projects.service';
 import { routes } from '../../../../../infra/configs/app.routes';
 import { Account } from '../../../auth/decorators/account.decorator';
 import { JwtAuthGuard } from '../../../auth/guards/jwt-auth.guard';

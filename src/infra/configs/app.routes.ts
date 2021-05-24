@@ -6,6 +6,7 @@ export const routes = {
   account: {
     root: accountRoot,
     create: `${accountRoot}/create`,
+    verify: `${accountRoot}/verify`,
   },
   auth: {
     root: authRoot,

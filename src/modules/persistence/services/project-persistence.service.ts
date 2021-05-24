@@ -8,9 +8,7 @@ export class ProjectPersistenceService implements CreateProjectPort {
   constructor(
     @Inject(ProjectRepository)
     private readonly projectRepository: ProjectRepository,
-  ) {
-    console.log('ProjectPersistenceService::constructor');
-  }
+  ) {}
 
   async createProject(project: ProjectEntity): Promise<boolean> {
     const result = await this.projectRepository.save(project);

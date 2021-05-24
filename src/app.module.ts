@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmOptions } from './infra/configs/typeorm.config';
-import { AccountModule } from './modules/presenters/account/account.module';
+import { AccountModule } from './modules/web/account/account.module';
 import { PersistenceModule } from './modules/persistence/persistence.module';
-import { AuthModule } from './modules/presenters/auth/auth.module';
+import { AuthModule } from './modules/web/auth/auth.module';
 
 @Module({
   imports: [

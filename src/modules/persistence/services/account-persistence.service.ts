@@ -14,9 +14,7 @@ export class AccountPersistenceService
     private readonly accountRepository: AccountRepository,
     @Inject(ProjectRepository)
     private readonly projectRepository: ProjectRepository,
-  ) {
-    console.log('AccountPersistenceService::constructor');
-  }
+  ) {}
 
   async createAccount(account: AccountEntity): Promise<boolean> {
     const found = await this.accountRepository.loadAccountByEmail(

@@ -5,7 +5,9 @@ import { AuthResponse } from '../dtos/auth-response.dto';
 import { AccountEntity } from '../../../../core/domain/entities/account.entity';
 import { AccountIdentity } from '../passport/types';
 import { LoadAccountPort } from '../../../../core/domain/ports/out/account/load-account.port';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class AuthService {
   constructor(
     private readonly loadAccountPort: LoadAccountPort,
