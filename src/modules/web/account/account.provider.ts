@@ -1,10 +1,10 @@
 import { Provider } from '@nestjs/common';
-import { LoadAccountPort } from '../../../core/domain/ports/out/account/load-account.port';
 import { CreateProjectPort } from '../../../core/domain/ports/out/project/create-project.port';
+import { LoadProjectPort } from '../../../core/domain/ports/out/project/load-project.port';
 import { BcryptServiceAdapter } from '../../../infra/crypto/bcrypt-service.adapter';
-import { AccountPersistenceService } from '../../persistence/services/account-persistence.service';
 import { ProjectPersistenceService } from '../../persistence/services/project-persistence.service';
 import { CreateProjectService } from './use-cases/create-project/create-project.service';
+import { GetProjectService } from './use-cases/get-project/get-project.service';
 import { GetProjectsService } from './use-cases/get-projects/get-projects.service';
 
 export const BcryptServiceSymbol = Symbol('bcryptServiceSymbol');
@@ -26,11 +26,20 @@ export const CreateProjectProvider: Provider = {
   inject: [ProjectPersistenceService],
 };
 
+export const GetProjectSymbol = Symbol('GetProjectSymbol');
+export const GetProjectProvider: Provider = {
+  provide: GetProjectSymbol,
+  useFactory: (port: LoadProjectPort): GetProjectService => {
+    return new GetProjectService(port);
+  },
+  inject: [ProjectPersistenceService],
+};
+
 export const GetProjectsSymbol = Symbol('GetProjectsSymbol');
 export const GetProjectsProvider: Provider = {
   provide: GetProjectsSymbol,
-  useFactory: (port: LoadAccountPort): GetProjectsService => {
+  useFactory: (port: LoadProjectPort): GetProjectsService => {
     return new GetProjectsService(port);
   },
-  inject: [AccountPersistenceService],
+  inject: [ProjectPersistenceService],
 };

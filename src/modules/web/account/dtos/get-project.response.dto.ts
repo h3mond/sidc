@@ -9,4 +9,7 @@ export class ProjectResponse {
 
   @ApiProperty()
   createdAt: string;
+
+  @ApiProperty({ type: 'uuid' })
+  clientSecret: string;
 }

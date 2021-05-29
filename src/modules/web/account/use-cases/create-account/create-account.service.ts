@@ -1,5 +1,4 @@
 import {
-  BadRequestException,
   CACHE_MANAGER,
   ConflictException,
   ForbiddenException,
@@ -15,7 +14,7 @@ import { AccountPersistenceService } from '../../../../persistence/services/acco
 import { BcryptServiceSymbol } from '../../account.provider';
 import { Cache } from 'cache-manager';
 import { ID } from '../../../../../core/shared/value-objects/id.value-object';
-import { AccountCacheInterface } from '../../dtos/account-cache.interface';
+import { AccountCacheInterface } from './interfaces/account-cache.interface';
 import { AccountEntity } from '../../../../../core/domain/entities/account.entity';
 import { LoadAccountPort } from '../../../../../core/domain/ports/out/account/load-account.port';
 

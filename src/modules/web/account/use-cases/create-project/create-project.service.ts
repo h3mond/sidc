@@ -6,7 +6,7 @@ import { CreateProjectPort } from '../../../../../core/domain/ports/out/project/
 export class CreateProjectService implements CreateProjectUseCase {
   constructor(private readonly _createProjectPort: CreateProjectPort) {}
 
-  async createProject(command: CreateProjectCommand): Promise<boolean> {
+  async createProject(command: CreateProjectCommand): Promise<ProjectEntity> {
     const project = new ProjectEntity(command.project);
     return await this._createProjectPort.createProject(project);
   }

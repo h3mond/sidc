@@ -18,7 +18,7 @@ import { CreateAccountCommand } from '../../../../../core/domain/ports/in/create
 import { routes } from '../../../../../infra/configs/app.routes';
 import { CreateAccountSymbol } from '../../account.provider';
 import { CreateAccountRequest } from '../../dtos/create-account.request.dto';
-import { CreateProjectResponse } from '../../dtos/create-project.response.dto';
+import { CreateAccountResponse } from '../../dtos/create-account.response.dto';
 import { VerifyAccountRequest } from '../../dtos/verify-account.request.dto';
 
 import { CreateAccountService } from './create-account.service';
@@ -45,7 +45,7 @@ export class CreateAccountController {
   @ApiOperation({ summary: 'Create account.' })
   async createAccount(
     @Body() body: CreateAccountRequest,
-  ): Promise<CreateProjectResponse> {
+  ): Promise<CreateAccountResponse> {
     const command = new CreateAccountCommand({
       name: body.name,
       surname: body.surname,
@@ -59,7 +59,7 @@ export class CreateAccountController {
         HttpStatus.BAD_REQUEST,
       );
     }
-    const response = new CreateProjectResponse();
+    const response = new CreateAccountResponse();
     response.key = key.value;
     return response;
   }

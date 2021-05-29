@@ -4,13 +4,14 @@ import { PersistenceModule } from '../../persistence/persistence.module';
 import {
   BcryptServiceProvider,
   CreateAccountSymbol,
-  // CreateAccountProvider,
   CreateProjectProvider,
+  GetProjectProvider,
   GetProjectsProvider,
 } from './account.provider';
 import { CreateAccountController } from './use-cases/create-account/create-account.controller';
 import { CreateAccountService } from './use-cases/create-account/create-account.service';
 import { CreateProjectController } from './use-cases/create-project/create-project.controller';
+import { GetProjectController } from './use-cases/get-project/get-project.controller';
 import { GetProjectsController } from './use-cases/get-projects/get-projects.controller';
 
 @Module({
@@ -22,6 +23,7 @@ import { GetProjectsController } from './use-cases/get-projects/get-projects.con
   controllers: [
     CreateAccountController,
     CreateProjectController,
+    GetProjectController,
     GetProjectsController,
   ],
   providers: [
@@ -30,6 +32,7 @@ import { GetProjectsController } from './use-cases/get-projects/get-projects.con
       useClass: CreateAccountService,
     },
     CreateProjectProvider,
+    GetProjectProvider,
     GetProjectsProvider,
     BcryptServiceProvider,
   ],

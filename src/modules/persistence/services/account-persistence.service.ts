@@ -23,24 +23,14 @@ export class AccountPersistenceService
     if (found !== undefined) {
       throw new ConflictException('Email address already taken');
     }
-    const result = await this.accountRepository.save(account);
-    return !!result;
+    return !!(await this.accountRepository.save(account));
   }
 
   async loadAccountByEmail(email: string): Promise<AccountEntity> {
     return await this.accountRepository.findOne({ email: email });
   }
 
-  async loadAccount(accountId: string): Promise<AccountEntity> {
-    return await this.accountRepository.findOne({ id: new ID(accountId) });
-  }
-
-  async loadAccountProjects(accountId: string): Promise<AccountEntity> {
-    const found = await this.accountRepository.findOneByIdOrThrow(accountId);
-    const projects = await this.projectRepository.findMany({
-      ownerId: found.id,
-    });
-    projects.map((item) => found.addProject(item));
-    return found;
+  async loadAccount(accountId: ID): Promise<AccountEntity> {
+    return await this.accountRepository.findOne({ id: accountId });
   }
 }
